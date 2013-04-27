@@ -1,0 +1,14 @@
+<% weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"] %>
+<div id="weeklynote_<%=weeklynote.id%>" class="weeklynote_item">  
+    <div style="float: right">
+      	<%= link_to image_tag('edit.png'), edit_weeklynote_path(weeklynote.id),
+        :remote => true %>
+      	<%= link_to image_tag('delete.png'), weeklynote_path(weeklynote.id), 
+        :confirm => '确定要删除?', 
+        :method => :delete, 
+        :remote => true %>
+  	</div>
+  	<h3><%= weeklynote.start_date.strftime("%y-%m-%d") + " " + weekdays[weeklynote.start_date.wday] + " ~ " + weeklynote.end_date.strftime("%y-%m-%d") + " " + weekdays[weeklynote.end_date.wday] %></h3>
+    <div id="note_<%=weeklynote.id%>"><%= weeklynote.note %></div>
+    <br/>
+</div>

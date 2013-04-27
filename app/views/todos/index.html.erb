@@ -1,0 +1,27 @@
+<br/>
+<div id="to_do_new">
+    <%= form_tag(todos_path, 
+	   :method => "post", 
+	   :remote => true, 
+	   :id => "to_do_create") do -%>
+	   <fieldset>
+	   		<legend onclick="show_and_hide_element('to_do_advanced_options');">高级选项</legend>
+	   		<div id="to_do_advanced_options" style="display: none">
+       			时间：<%= date_select 'date', 'date', :use_month_numbers => true %>
+       		</div>
+       </fieldset>
+	   To_Do：<%= text_field_tag 'to_do_content', '', :size => 50 %>
+	   <%= submit_tag '创建' %>
+    <% end -%>
+</div>
+<br/>
+
+<h3 style='border-bottom: 1px solid;'>TO_DO:</h3>
+<div id="undos_list">
+	<%= render :partial => "undos_list", :locals => {:to_dos => @to_dos}%>
+</div>
+
+<h3 style='border-bottom: 1px solid;'>DONE:</h3>
+<div id="dones_list">
+	<%= render :partial => "dones_list", :locals => {:dones => @dones}%>
+</div>

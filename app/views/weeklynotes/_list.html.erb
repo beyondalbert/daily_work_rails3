@@ -1,0 +1,7 @@
+<% if weeklynotes.empty? %>
+  <span>还没有工作周报，请添加！</span>
+<% else %>
+  <% weeklynotes.each do |d| %>
+    <%= render :partial => 'item', :locals => {:weeklynote => d} %>
+  <% end %>
+<% end %>

@@ -1,0 +1,24 @@
+<div id="receiver_edit"></div>
+<table id="receivers">
+  <thead>
+    <tr style="background-color: #cccccc">
+      <th style="width: 25%">名字</th>
+      <th style="width: 50%">email地址</th>
+      <th style="width: 20%">类型</th>
+      <th ></th>
+      <th ></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @receivers.empty? %>
+      <%= render :partial => 'item_none'%>
+    <%else%>
+      <% @receivers.each do |r| %>
+        <tr id="receiver_<%=r.id%>">
+          <%= render :partial => 'item', :locals => {:receiver => r} %>
+        </tr>
+        <tr id="receiver_edit_<%=r.id%>"></tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

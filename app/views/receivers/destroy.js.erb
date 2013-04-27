@@ -1,0 +1,4 @@
+$('#receiver_<%=@receiver.id%>').remove();
+<% if @receiver_flag.nil? %>
+	$("<%= escape_javascript(render :partial => "item_none") %>").appendTo($('#receivers'));
+<% end %>

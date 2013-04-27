@@ -1,0 +1,6 @@
+<%= form_tag(dailynote_path(dailynote.id), 
+	:method => "put", :remote => true) do -%>
+	<p><%= text_area_tag 'dailynote', dailynote.note, :size => "50x10" %></p>
+	<%= submit_tag '保存' %>
+	<input type="button" value="取消" onclick="$('#note_<%= dailynote.id %>').html('<%= escape_javascript(dailynote.note) %>')">
+<% end -%>

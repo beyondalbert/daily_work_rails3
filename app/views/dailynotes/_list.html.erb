@@ -1,0 +1,7 @@
+<% if dailynotes.empty? %>
+  <span>还没有工作日报，请添加！</span>
+<% else %>
+  <% dailynotes.each do |d| %>
+    <%= render :partial => 'item', :locals => {:dailynote => d} %>
+  <% end %>
+<% end %>

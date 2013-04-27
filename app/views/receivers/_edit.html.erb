@@ -1,0 +1,8 @@
+<%= form_tag(receiver_path(receiver.id), 
+	:method => "put", :remote => true) do -%>
+	<%= text_field_tag 'name', receiver.nickname %>
+	<%= text_field_tag 'email_address', receiver.email %>
+	<%= select_tag "contact_type", options_for_select([["收件人", "1"], ["抄送人", "2"]], receiver.contact_type.to_s) %>
+    <%= submit_tag '保存' %>
+    <input type="button" value="取消" onclick="$('#receiver_edit').html('');">
+<% end -%>

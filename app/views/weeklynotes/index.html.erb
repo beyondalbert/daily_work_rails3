@@ -1,0 +1,24 @@
+<fieldset>
+    <legend onclick="show_and_hide_element('weeklynote_create');"><h3>新建</h3></legend>
+    <%= form_tag({:controller => "weeklynotes", :action => "create"}, 
+	   :method => "post", :remote => true, :id => "weeklynote_create", :style => "display: none") do -%>
+	   <p>时间：<%= date_select 'start_date', 'date', :use_month_numbers => true %>
+        - <%= date_select 'end_date', 'date', :use_month_numbers => true %></p>
+	   <p>内容：<%= text_area_tag 'weeklynote', '', :size => "50x10" %></p>
+	   <%= submit_tag '保存' %>
+    <% end -%>
+</fieldset>
+<br/>
+<h2 style='border-bottom: 2px solid;'>历史周报</h2>
+<div id="weeklynotes_list"> 
+    <%= render :partial => 'list', :locals => {:weeklynotes => @weeklynotes} %>
+</div>
+
+<script>
+$(function() {
+    $( "#start_date" ).datepicker();
+    $( "#end_date" ).datepicker();
+
+});
+</script>
+

@@ -1,0 +1,4 @@
+if($('#receiver_none').length > 0) {
+	$('#receiver_none').remove();
+}
+$("<%= escape_javascript(render :partial => "item", :locals => {:receiver => @receiver}) %>").appendTo($('#receivers'));

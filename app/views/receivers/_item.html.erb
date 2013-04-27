@@ -1,0 +1,9 @@
+<td><%= receiver.nickname %></td>
+<td><%= receiver.email %></td>
+<td><%= receiver.contact_type == TO ? '收件人' : '抄送人' %></td>
+<td><%= link_to image_tag('edit.png'), edit_receiver_path(receiver.id),
+    	:remote => true %></td>
+<td><%= link_to image_tag('delete.png'), receiver_path(receiver.id),
+        :confirm => '确定要删除?', 
+        :method => :delete, 
+		:remote => true %></td>

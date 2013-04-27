@@ -1,0 +1,6 @@
+<%= form_tag(weeklynote_path(weeklynote.id), 
+	:method => "put", :remote => true) do -%>
+	<p><%= text_area_tag 'weeklynote', weeklynote.note, :size => "50x10" %></p>
+	<%= submit_tag '保存' %>
+	<input type="button" value="取消" onclick="$('#note_<%= weeklynote.id %>').html('<%= escape_javascript(weeklynote.note) %>')">
+<% end -%>

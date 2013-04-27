@@ -1,0 +1,5 @@
+<% if @weeklynote_flag %>
+	$('#weeklynote_<%=@weeklynote.id%>').remove();
+<% else %>
+	$('#weeklynotes_list').html("<span>还没有工作日报，请添加！</span>");
+<% end %>

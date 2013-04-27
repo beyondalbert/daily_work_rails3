@@ -1,0 +1,18 @@
+<div id="recipients">
+	<input type="button" value="新建联系人" style="float:right;" onclick="$('#receiver_create').show();">
+	<h2 style='border-bottom: 2px solid;'>我的联系人</h2>
+	<%= form_tag(receivers_path, :method => "post", 
+	:remote => true, 
+	:id => "receiver_create", 
+	:style => "display: none") do %>
+  		联系人名字:&nbsp;&nbsp;<%= text_field_tag 'name', '' %><br/>
+  		联系人Email:<%= text_field_tag 'email_address', '' %><br/>
+  		联系人类型:&nbsp;&nbsp;<%= select_tag "contact_type", options_for_select([["收件人", "1"], ["抄送人", "2"]]) %><br/>
+  		<%= submit_tag '保存'%>
+  		<input type="button" value="取消" onclick="$('#receiver_create').hide();">
+	<% end %>
+
+  <div id="receivers_list">
+    <%= render :partial => 'list', :locals => {:contact_type => 'to'} %>
+  </div>
+</div>

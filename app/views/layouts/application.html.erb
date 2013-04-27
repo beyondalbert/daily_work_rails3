@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>日报发送系统</title>
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="banner">
+			<%= link_to image_tag("logo.png")%>
+		</div>
+
+		<div id="top_menu">
+			<%= link_to "日报", dailynotes_path, :class => "link_to_css_modify" %> &nbsp;
+			<%= link_to "周报", weeklynotes_path, :class => "link_to_css_modify" %> &nbsp;
+			<%= link_to "联系人", receivers_path, :class => "link_to_css_modify" %>
+			<%= link_to "To_Do_List", todos_path, :class => "link_to_css_modify" %>
+		</div>
+
+		<div id="userlogin">
+			<% if user_signed_in? %>
+			<%= link_to(current_user.email, edit_user_registration_path, 
+			:class => "link_to_css_modify") %> &nbsp;
+			<%= link_to('退出', destroy_user_session_path, 
+			:method => :delete, 
+			:class => "link_to_css_modify") %>
+			<% else %>
+			<%= link_to('登录', new_user_session_path, :class => "link_to_css_modify") %> &nbsp;
+			<%= link_to('注册', new_user_registration_path, :class => "link_to_css_modify")  %>
+			<% end %>
+		</div>
+		
+		<div id="content">
+			<div id="flash_messages">
+				<%= render_flash_messages %>
+			</div>
+			<%= yield %>
+		</div>
+	</body>
+</html>

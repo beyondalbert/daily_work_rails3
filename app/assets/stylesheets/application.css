@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+body {font-family: Verdana, sans-serif; font-size: 12px; color:#484848; margin: 0; padding: 0; min-width: 900px; background-color: #c6ffc6}
+
+h1, h2, h3, h4 {font-family: "Trebuchet MS", Verdana, sans-serif;padding: 2px 10px 1px 0px;margin: 0 0 10px 0;}
+
+#banner {
+    background: #555753;
+    /*border-bottom: 2px solid;*/
+    font: small-caps 40px/40px "Times New Roman", serif;
+    color: #282;
+    text-align: center;
+    height: 30px;
+}
+
+#banner img{
+    float: left;
+}
+
+#userlogin {
+    float: right;
+    font: 15px "Times New Roman";
+    color: #ffffff;
+    margin-top: -20px;
+}
+
+#top_menu {
+    margin-left: 300px;
+    font: 15px "Times New Roman";
+    color: #ffffff;
+    margin-top: -20px;
+}
+
+#content {
+    margin-left: 300px;
+    margin-right: 300px;
+    min-width: 600px;
+    background-color: #ffffff;
+}
+
+.link_to_css_modify{
+    color: white;
+    text-decoration: none;
+}
+
+/*flash[:notice]的样式*/
+.notice {
+    border: 1px solid;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #e0f0f0;
+    font: bold smaller sans-serif;
+}
+/*flash[:alert]的样式*/
+.alert {
+    border: 1px solid;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #ff0000;
+    font: bold smaller sans-serif;
+}
+
+.odd {background-color:#E6E6FA;}
+.even {background-color: #fff;}
+
+.dailynote_content {
+    border: 1px solid;
+}
+.dailynote_item {
+    border-bottom: 1px solid;
+}
