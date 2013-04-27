@@ -1,9 +1,9 @@
 class TodosController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_todo, :only => [:destroy, :done]
+  before_filter :find_todo, :only => [:destroy, :done, :undo]
 
   def index
-  	@to_dos = Todo.find(:all, :conditions => {:user_id => current_user.id})
+  	@undos = Todo.find(:all, :conditions => {:user_id => current_user.id, :status => false})
   	@dones = Todo.find(:all, :conditions => {:user_id => current_user.id, :status => true})
   end
 
@@ -32,6 +32,17 @@ class TodosController < ApplicationController
 
   def done
     @to_do.status = true
+
+    if @to_do.save
+      respond_to do |format|
+        format.js
+      end
+    else
+    end
+  end
+
+  def undo
+    @to_do.status = false
 
     if @to_do.save
       respond_to do |format|

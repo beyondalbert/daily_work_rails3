@@ -63,6 +63,7 @@ DailyWorkReport3::Application.routes.draw do
   resources :receivers
 
   put "todos/done"
+  put "todos/undo"
   resources :todos
 
 

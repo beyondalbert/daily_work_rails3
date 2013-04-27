@@ -1,0 +1,23 @@
+<div id="done_item_<%= done.id%>">
+	<%= check_box_tag 'ck_box_' + done.id.to_s, '', true, {'data-href' => "todos/undo?id=#{done.id}"} %>
+	<s><%= done.content %></s>
+	<%= link_to image_tag('delete.png'), todo_path(done.id), 
+        :confirm => '确定要删除?', 
+        :method => :delete, 
+        :remote => true %>
+	<br/>
+</div>
+
+<script type="text/javascript">
+	var ck_box_id = 'ck_box_' + <%= done.id.to_s %>;
+	$('#' + ck_box_id).click(function() {
+		$.ajax({
+			url: $(this).data('href'),
+			type: 'PUT',
+			dataType: 'script',
+			success: function(data, textStatus, jqXHR) {
+
+			}
+		})
+	})
+</script>

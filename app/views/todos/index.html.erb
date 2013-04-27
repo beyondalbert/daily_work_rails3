@@ -18,10 +18,14 @@
 
 <h3 style='border-bottom: 1px solid;'>TO_DO:</h3>
 <div id="undos_list">
-	<%= render :partial => "undos_list", :locals => {:to_dos => @to_dos}%>
+	<% @undos.each do |t| %>
+		<%= render :partial => "undos_item", :locals => {:to_do => t}%>
+	<% end %>
 </div>
 
 <h3 style='border-bottom: 1px solid;'>DONE:</h3>
 <div id="dones_list">
-	<%= render :partial => "dones_list", :locals => {:dones => @dones}%>
+	<% @dones.each do |t| %>
+		<%= render :partial => "dones_item", :locals => {:done => t}%>
+	<% end %>
 </div>

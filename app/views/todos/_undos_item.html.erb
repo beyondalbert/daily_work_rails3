@@ -1,0 +1,25 @@
+<div id="undo_item_<%= to_do.id%>">
+	<%= check_box_tag 'ck_box_' + to_do.id.to_s, '', false, {'data-href' => "todos/done?id=#{to_do.id}"} %>
+	<%= to_do.content %>
+	<%= link_to image_tag('edit.png'), edit_todo_path(to_do.id),
+        :remote => true %>
+	<%= link_to image_tag('delete.png'), todo_path(to_do.id), 
+        :confirm => '确定要删除?', 
+        :method => :delete, 
+        :remote => true %>
+	<br/>
+</div>
+
+<script type="text/javascript">
+	var ck_box_id = 'ck_box_' + <%= to_do.id.to_s %>;
+	$('#' + ck_box_id).click(function() {
+		$.ajax({
+			url: $(this).data('href'),
+			type: 'PUT',
+			dataType: 'script',
+			success: function(data, textStatus, jqXHR) {
+
+			}
+		})
+	})
+</script>

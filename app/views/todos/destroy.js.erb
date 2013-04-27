@@ -1,1 +1,5 @@
-$('#undo_item_<%=@to_do.id%>').remove();
+<% if @to_do.status %>
+	$('#done_item_<%=@to_do.id%>').remove();
+<% else %>
+	$('#undo_item_<%=@to_do.id%>').remove();
+<% end %>

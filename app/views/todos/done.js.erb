@@ -1,2 +1,2 @@
 $('#undo_item_<%=@to_do.id%>').remove();
-$("<%= escape_javascript(render :partial => "dones_list_item", :locals => {:done => @to_do}) %>").appendTo($('#dones_list'));
+$("<%= escape_javascript(render :partial => "dones_item", :locals => {:done => @to_do}) %>").appendTo($('#dones_list'));
