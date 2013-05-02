@@ -9,6 +9,13 @@
     <% end -%>
 </fieldset>
 <br/>
+
+<%= form_tag({:controller => "dailynotes", :action => "search"},
+    :remote => true, :id => "dailynote_search", :style => "float: right") do -%>
+    <%= date_select 'start_date', 'date', :use_month_numbers => true %>
+        - <%= date_select 'end_date', 'date', :use_month_numbers => true %>
+    <%= submit_tag '搜索' %>
+<% end -%>
 <h2 style='border-bottom: 2px solid;'>历史日报</h2>
 <div id="dailynotes_list"> 
     <%= render :partial => 'list', :locals => {:dailynotes => @dailynotes} %>

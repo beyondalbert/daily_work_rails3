@@ -45,6 +45,17 @@ class DailynotesController < ApplicationController
 		end
 	end
 
+	def search
+		start_date = params[:start_date]["date(1i)"] + "-" + params[:start_date]["date(2i)"] + "-" + params[:start_date]["date(3i)"]
+		end_date = params[:end_date]["date(1i)"] + "-" + params[:end_date]["date(2i)"] + "-" + params[:end_date]["date(3i)"]
+		
+		@dailynotes = Dailynote.where(:user_id => current_user.id, :date => (start_date.to_date)..(end_date.to_date))
+	
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 	def find_dailynote

@@ -57,7 +57,7 @@ DailyWorkReport3::Application.routes.draw do
   root :to => 'home#index'
   get "home/index"
   # get "dailynote/index"
-  # post "dailynote/create"
+  post "dailynotes/search"
   resources :dailynotes
   resources :weeklynotes
   resources :receivers
