@@ -58,6 +58,8 @@ DailyWorkReport3::Application.routes.draw do
   get "home/index"
   # get "dailynote/index"
   post "dailynotes/search"
+  get "dailynotes/send_mail_edit"
+  post "dailynotes/send_mail"
   resources :dailynotes
   resources :weeklynotes
   resources :receivers

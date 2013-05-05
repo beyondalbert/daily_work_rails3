@@ -1,3 +1,5 @@
+<%= link_to '发送日报', {:controller => "dailynotes", :action => "send_mail_edit"}, :style => "float: right"%>
+</br>
 <fieldset>
     <legend onclick="show_and_hide_element('dailynote_create');"><h3>新建</h3></legend>
     <%= form_tag({:controller => "dailynotes", :action => "create"}, 
@@ -6,6 +8,7 @@
        <p>时间：<%= date_select 'date', 'date', :use_month_numbers => true %></p>
 	   <p>内容：<%= text_area_tag 'dailynote', '', :size => "50x10" %></p>
 	   <%= submit_tag '保存' %>
+
     <% end -%>
 </fieldset>
 <br/>
@@ -16,7 +19,9 @@
         - <%= date_select 'end_date', 'date', :use_month_numbers => true %>
     <%= submit_tag '搜索' %>
 <% end -%>
+
 <h2 style='border-bottom: 2px solid;'>历史日报</h2>
+
 <div id="dailynotes_list"> 
     <%= render :partial => 'list', :locals => {:dailynotes => @dailynotes} %>
 </div>

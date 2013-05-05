@@ -56,6 +56,22 @@ class DailynotesController < ApplicationController
 		end
 	end
 
+	def send_mail_edit
+		@dailynotes = Dailynote.where(:user_id => current_user.id, :date => (Time.now.midnight - 7.day)..(Time.now.midnight + 1.day))
+	end
+
+	def send_mail
+		dailynote_ids = []
+		params[:ck_box].each do |d|
+			dailynote_ids << d[1].to_i
+		end
+		@dailynotes = Dailynote.where(:id => dailynote_ids)
+
+		UserMailer.dailynotes(current_user, @dailynotes, params[:plan]).deliver
+
+		redirect_to :back
+	end
+
 	private
 
 	def find_dailynote
