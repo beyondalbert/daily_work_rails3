@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require kindeditor
 //= require_tree .
 
 function show_and_hide_element(element_id) {

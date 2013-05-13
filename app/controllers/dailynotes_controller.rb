@@ -3,7 +3,7 @@ class DailynotesController < ApplicationController
 	before_filter :find_dailynote, :only => [:edit, :update, :destroy]
 
 	def index
-		@dailynotes = Dailynote.find(:all, :conditions => {:user_id => current_user.id})
+		@dailynotes = Dailynote.where(:user_id => current_user.id).order("date DESC")
 	end
 
 	def create
@@ -20,17 +20,13 @@ class DailynotesController < ApplicationController
 	end
 
 	def edit
-		respond_to do |format|
-			format.js
-		end
+
 	end
 
 	def update
 		@dailynote.note = params[:dailynote]
 		if @dailynote.save
-			respond_to do |format|
-				format.js
-			end
+			redirect_to :action => "index"
 		else
 		end
 	end

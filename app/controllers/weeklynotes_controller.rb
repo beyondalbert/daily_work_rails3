@@ -3,7 +3,7 @@ class WeeklynotesController < ApplicationController
 	before_filter :find_weeklynote, :only => [:edit, :update, :destroy]
 
 	def index
-		@weeklynotes = Weeklynote.find(:all, :conditions => {:user_id => current_user.id})
+		@weeklynotes = Weeklynote.where(:user_id => current_user.id).order("start_date DESC")
 	end
 
 	def create
@@ -22,17 +22,13 @@ class WeeklynotesController < ApplicationController
 	end
 
 	def edit
-		respond_to do |format|
-			format.js
-		end
+
 	end
 
 	def update
 		@weeklynote.note = params[:weeklynote]
 		if @weeklynote.save
-			respond_to do |format|
-				format.js
-			end
+			redirect_to :action => 'index'
 		else
 		end
 	end

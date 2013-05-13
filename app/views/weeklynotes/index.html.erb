@@ -4,7 +4,7 @@
 	   :method => "post", :remote => true, :id => "weeklynote_create", :style => "display: none") do -%>
 	   <p>时间：<%= date_select 'start_date', 'date', :use_month_numbers => true %>
         - <%= date_select 'end_date', 'date', :use_month_numbers => true %></p>
-	   <p>内容：<%= text_area_tag 'weeklynote', '', :size => "50x10" %></p>
+	   <p>内容：<%= kindeditor_tag 'weeklynote', '', :simple_mode => true %></p>
 	   <%= submit_tag '保存' %>
     <% end -%>
 </fieldset>

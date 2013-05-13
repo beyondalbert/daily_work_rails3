@@ -6,14 +6,14 @@
         	<%= check_box_tag 'ck_box[' + d.id.to_s + ']', d.id, true %>
   		</div>
   		<span class="dailynote_mail" style="background-color: #a9a9a9"><%= d.date.strftime("%y-%m-%d") + " " + weekdays[d.date.wday] + " " + "小结" %></span>
-    	<div id="note_<%=d.id%>"><%= d.note %></div>
+    	<div id="note_<%=d.id%>"><%=raw d.note %></div>
     	<br/>
 	</div>
 <% end %>
 </br>
 <span class="dailynote_mail" style="background-color: #ff8c00"><%= (Time.now.midnight + 1.day).strftime("%y-%m-%d") + " " + weekdays[(Time.now.midnight + 1.day).wday] + " " + "计划"%></span>
 </br>
-<%= text_area_tag "plan", '', :size => "50x10" %>
+<%= kindeditor_tag "plan", '' %>
 </br>
 <%= submit_tag "发送" %>
 <% end -%>

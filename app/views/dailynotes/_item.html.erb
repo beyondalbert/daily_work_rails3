@@ -2,13 +2,13 @@
 <div id="dailynote_<%=dailynote.id%>" class="dailynote_item">  
     <div style="float: right">
       	<%= link_to image_tag('edit.png'), edit_dailynote_path(dailynote.id),
-        :remote => true %>
+        :remote => false %>
       	<%= link_to image_tag('delete.png'), dailynote_path(dailynote.id), 
         :confirm => '确定要删除?', 
         :method => :delete, 
         :remote => true %>
   	</div>
   	<h3><%= dailynote.date.strftime("%y-%m-%d") + " " + weekdays[dailynote.date.wday] %></h3>
-    <div id="note_<%=dailynote.id%>"><%= dailynote.note %></div>
+    <div id="note_<%=dailynote.id%>"><%=raw dailynote.note %></div>
     <br/>
 </div>

@@ -1,0 +1,8 @@
+<% weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"] %>
+<h3><%= @dailynote.date.strftime("%y-%m-%d") + " " + weekdays[@dailynote.date.wday] %></h3>
+<%= form_tag(dailynote_path(@dailynote.id), 
+	:method => "put", :remote => false) do -%>
+	<p><%= kindeditor_tag "dailynote", @dailynote.note, :simple_mode => true %></p>
+	<%= submit_tag '保存' %>
+	<%= link_to '取消', {:controller => "dailynotes", :action => "index"}%>
+<% end -%>

@@ -3,12 +3,13 @@
 <fieldset>
     <legend onclick="show_and_hide_element('dailynote_create');"><h3>新建</h3></legend>
     <%= form_tag({:controller => "dailynotes", :action => "create"}, 
-	   :method => "post", :remote => true, :id => "dailynote_create", :style => "display: none") do -%>
-	   <!--<p>时间：<%= text_field_tag 'date', '', :size => 10 %></p>-->
+	   :method => "post", 
+       :remote => true, 
+       :id => "dailynote_create", 
+       :style => "display: none") do -%>
        <p>时间：<%= date_select 'date', 'date', :use_month_numbers => true %></p>
-	   <p>内容：<%= text_area_tag 'dailynote', '', :size => "50x10" %></p>
+       <p>内容：<%= kindeditor_tag "dailynote", '', :simple_mode => true %></p>
 	   <%= submit_tag '保存' %>
-
     <% end -%>
 </fieldset>
 <br/>
