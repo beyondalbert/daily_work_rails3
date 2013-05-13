@@ -1,0 +1,32 @@
+<style type="text/css">
+.item {
+	border: solid 1px black;
+	float: left;
+	width: 20px;
+	height: 20px;
+	background-color: #ffffff
+}
+</style>
+
+<div style="width: 440px">
+<%= form_tag({:controller => "home", :action => "auto_cell"}) do -%>
+	 <% i, j = 0, 0 %>
+	<% @ca.each do |ca| %>
+		<% ca.each do |item| %>
+			<div id="div_<%= i %>_<%= j %>" class="item" style="<%= item == 1 ? "background-color: #000000 " : "" %>" onclick="change_color(<%= i %>, <%= j %>)"></div>
+			<%= hidden_field_tag "ca[#{i}][#{j}]" , item %>
+			<% j += 1 %>
+		<% end -%>
+		<% i += 1 %>
+		<% j = 0 %>
+	<% end -%>
+	<%= submit_tag '确定' %>
+<% end -%>
+</div>
+
+<script type="text/javascript">
+	function change_color(i, j) {
+		$("#div_" + i + "_" + j).css("background-color", "#000000");
+		$("#ca_" + i + "_" + j).val("1");
+	}
+</script>

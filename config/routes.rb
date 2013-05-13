@@ -56,6 +56,8 @@ DailyWorkReport3::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'home#index'
   get "home/index"
+  post "home/auto_cell"
+  get "home/auto_cell"
   # get "dailynote/index"
   post "dailynotes/search"
   get "dailynotes/send_mail_edit"
